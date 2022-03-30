@@ -1,8 +1,14 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {connect} from "react-redux";
+import {getUser} from "./services/user";
 
 function app(props) {
     const {login, userInfo} = props;
+    useEffect(() => {
+        getUser().then(res => {
+            console.log(res)
+        })
+    },[])
     return (
         <div>
            <h1>{login ? '已经登录' : '未登录'}</h1>
